@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiBindingsApp"
+             x:Class="MauiBindingsApp.Page4"
+             Title="Page4">
+    <ContentPage.Resources>
+        <!--<ResourceDictionary>
+            <Style x:Key="entryTriggerStyle" TargetType="Entry">
+                <Style.Triggers>
+                    <Trigger Property="IsFocused" Value="True" TargetType="Entry">
+                        <Setter Property="TextColor" Value="Black"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>-->
+        <local:Flight x:Key="flight" Name="12345" From="" To="" Day="10"/>
+    </ContentPage.Resources>
+
+    <!--Style="{StaticResource entryTriggerStyle}"-->
+    <VerticalStackLayout WidthRequest="400">
+        <Entry x:Name="entry"
+               FontSize="30"
+               >
+            <Entry.Triggers>
+                <!--<Trigger Property="IsFocused" Value="True" TargetType="Entry">
+                    <Setter Property="TextColor" Value="Black"/>
+                </Trigger>-->
+                <EventTrigger Event="TextChanged">
+                    <local:EntryNumberValidation/>
+                </EventTrigger>
+            </Entry.Triggers>
+            
+        </Entry>
+
+        <Entry FontSize="30" 
+               TextColor="Red"
+               Text="{Binding Source={StaticResource flight}, Path=From}">
+            <Entry.Triggers>
+                <DataTrigger TargetType="Entry"
+                             Binding="{Binding Source={StaticResource flight}, Path=From}"
+                             Value="Moscow">
+                    <Setter Property="TextColor" Value="Green"/>
+                </DataTrigger>
+            </Entry.Triggers>
+        </Entry>
+    </VerticalStackLayout>
+</ContentPage>

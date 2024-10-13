@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiBindingsApp"
+             x:Class="MauiBindingsApp.NewPage1"
+             Title="NewPage1">
+    <VerticalStackLayout x:Name="vstack" WidthRequest="400">
+        <Label x:Name="lblName" 
+               HorizontalOptions="Center"
+               Text="{Binding Source={RelativeSource AncestorType={x:Type local:Flight}},
+                              Path=Name}"/>
+        <Label x:Name="lblFrom" HorizontalOptions="Center"
+               Text="{Binding Source={RelativeSource AncestorType={x:Type local:Flight}},
+               Path=From}"/>
+        <Label x:Name="lblTo" HorizontalOptions="Center"
+               Text="{Binding Source={RelativeSource AncestorType={x:Type local:Flight}},
+               Path=To}"/>
+        <Label x:Name="lblDay" HorizontalOptions="Center"
+               Text="{Binding Source={RelativeSource AncestorType={x:Type local:Flight}},
+               Path=Day}"/>
+        <Button x:Name="btnChange" Clicked="btnChange_Clicked" Text="Change"/>
+    </VerticalStackLayout>
+</ContentPage>
